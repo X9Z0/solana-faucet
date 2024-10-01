@@ -1,3 +1,4 @@
+"use client";
 import {
   WalletDisconnectButton,
   WalletMultiButton,
