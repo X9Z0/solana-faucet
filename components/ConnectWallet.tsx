@@ -6,7 +6,7 @@ import {
 
 export const ConnectWallet = () => {
   return (
-    <div className="bg-blue-300 flex items-center justify-center">
+    <div className="gap-2 flex items-center justify-center">
       <WalletMultiButton />
       <WalletDisconnectButton />
     </div>
