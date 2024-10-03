@@ -1,6 +1,7 @@
 import { ChevronUp, RotateCw } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 export default function Dialer() {
   const [currentValue, setCurrentValue] = useState(0);
@@ -20,9 +21,8 @@ export default function Dialer() {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="relative mb-4">
-        <div></div>
+    <div className="flex flex-col items-center border-2 border-slate-100 p-2 h-[500px]">
+      <div className="relative mb-4 border-2 border-red-500">
         <div
           className="dialer w-24 h-24 rounded-full border-4 border-gray-500"
           style={{ transform: `rotate(${rotation}deg)` }}
@@ -47,13 +47,8 @@ export default function Dialer() {
           />
         ))}
       </div>
-      <div className="flex justify-center items-center gap-2">
-        <input
-          type="number"
-          className="p-2 border rounded-md text-center"
-          value={currentValue}
-          readOnly
-        />
+      <div className="flex justify-center items-center gap-2 border-2 border-cyan-500">
+        <Input type="number" className="" value={currentValue} readOnly />
         <Button variant={"outline"} size="icon" onClick={resetDialer}>
           <RotateCw />
         </Button>
