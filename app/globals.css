@@ -76,3 +76,27 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.dialer {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.dialer-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dialer::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}

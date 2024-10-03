@@ -13,6 +13,8 @@ import {
 import { clusterApiUrl } from "@solana/web3.js";
 import "@solana/wallet-adapter-react-ui/styles.css";
 import { SwitchToggle } from "@/components/SwitchToggle";
+import Dialer from "@/components/Dialer";
+import RotatingDialer from "@/components/RotatingDialer";
 
 function App() {
   const network = WalletAdapterNetwork.Devnet;
@@ -31,6 +33,10 @@ function App() {
               <div className="flex flex-col border-2 border-red-500 justify-center items-center gap-4">
                 <WalletMultiButton />
                 <WalletDisconnectButton />
+              </div>
+              <div>
+                <Dialer />
+                <RotatingDialer />
               </div>
             </div>
           </div>
