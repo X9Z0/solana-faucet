@@ -21,10 +21,10 @@ export default function Dialer() {
   };
 
   return (
-    <div className="flex flex-col items-center border-2 border-slate-100 p-2 h-[500px]">
+    <div className="relative flex flex-col items-center justify-center border-2 border-slate-100 p-2 w-[250px] h-[500px]">
       <div className="relative mb-4 border-2 border-red-500">
         <div
-          className="dialer w-24 h-24 rounded-full border-4 border-gray-500"
+          className="dialer w-32 h-32 rounded-full border-4 border-gray-500"
           style={{ transform: `rotate(${rotation}deg)` }}
           onClick={rotateDialer}
         >
@@ -42,13 +42,20 @@ export default function Dialer() {
               top: "50%",
               left: "50%",
               transformOrigin: "top center",
-              transform: `rotate(${index * 15}deg) translateY(-70px)`,
+              transform: `rotate(${index * 15}deg) translateY(-85px)`,
             }}
           />
         ))}
       </div>
-      <div className="flex justify-center items-center gap-2 border-2 border-cyan-500">
-        <Input type="number" className="" value={currentValue} readOnly />
+      <div className="flex justify-center items-center gap-2 ">
+        <Input
+          type="number"
+          className="text-center mt-3"
+          value={currentValue}
+          readOnly
+        />
+      </div>
+      <div className="absolute right-0 bottom-0 p-4">
         <Button variant={"outline"} size="icon" onClick={resetDialer}>
           <RotateCw />
         </Button>
