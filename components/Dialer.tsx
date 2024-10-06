@@ -4,20 +4,50 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 export default function Dialer() {
-  const [currentValue, setCurrentValue] = useState(0);
-  const [rotation, setRotation] = useState(0);
+  const [currentValue, setCurrentValue] = useState<number>(0);
+  const [rotation, setRotation] = useState<number>(0);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+  const handleClick = () => {
+    if (!audio) {
+      const newAudio = new Audio("/audio/switch.mp3");
+      newAudio.onerror = (e) => {
+        console.error("Error loading audio file: ", e);
+      };
+      setAudio(newAudio);
+      newAudio.play();
+    } else {
+      audio.currentTime = 0;
+      audio.play();
+    }
+  };
 
   const totalMarks = 24;
 
   const rotateDialer = () => {
+    handleClick();
     const newRotation = rotation + 360 / totalMarks;
     setRotation(newRotation);
     setCurrentValue((prevValue) => (prevValue + 1) % totalMarks);
   };
 
   const resetDialer = () => {
-    setRotation(0);
-    setCurrentValue(0);
+    let valuea: number = currentValue;
+    const intervalId = setInterval(() => {
+      if (valuea == 0) {
+        clearInterval(intervalId);
+        console.log("interval cleared");
+      }
+      handleClick();
+      console.log("audio played");
+
+      setRotation(valuea);
+      console.log("rotation set");
+      console.log("dialer rotated");
+      rotateDialer();
+      setCurrentValue(valuea);
+      valuea--;
+    }, 1000);
   };
 
   return (
