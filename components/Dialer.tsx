@@ -8,6 +8,26 @@ export default function Dialer() {
   const [rotation, setRotation] = useState<number>(0);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
+  const resetDialer = () => {
+    let valuea: number = currentValue;
+    const intervalDuration = 100;
+
+    const intervalId = setInterval(() => {
+      if (valuea <= 0) {
+        clearInterval(intervalId);
+        console.log("Dialer reset completed.");
+        return;
+      }
+
+      handleClick();
+
+      const newRotation = (valuea - 1) * (360 / totalMarks);
+      setRotation(newRotation);
+      setCurrentValue(valuea - 1);
+
+      valuea--;
+    }, intervalDuration);
+  };
   const handleClick = () => {
     if (!audio) {
       const newAudio = new Audio("/audio/switch.mp3");
@@ -31,28 +51,9 @@ export default function Dialer() {
     setCurrentValue((prevValue) => (prevValue + 1) % totalMarks);
   };
 
-  const resetDialer = () => {
-    let valuea: number = currentValue;
-    const intervalId = setInterval(() => {
-      if (valuea == 0) {
-        clearInterval(intervalId);
-        console.log("interval cleared");
-      }
-      handleClick();
-      console.log("audio played");
-
-      setRotation(valuea);
-      console.log("rotation set");
-      console.log("dialer rotated");
-      rotateDialer();
-      setCurrentValue(valuea);
-      valuea--;
-    }, 1000);
-  };
-
   return (
     <div className="relative flex flex-col items-center justify-center border-2 border-slate-100 p-2 w-[250px] h-[500px]">
-      <div className="relative mb-4 border-2 border-red-500">
+      <div className="relative mb-4 ">
         <div
           className="dialer w-32 h-32 rounded-full border-4 border-gray-500"
           style={{ transform: `rotate(${rotation}deg)` }}
