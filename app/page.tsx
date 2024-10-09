@@ -28,12 +28,12 @@ function App() {
             <div className="w-[1000px] p-2 flex justify-end">
               <SwitchToggle />
             </div>
-            <div className="w-[1000px] border-2 border-slate-100 p-4 flex justify-between items-center ">
-              <div className="flex flex-col border-2 border-red-500 p-4 items-center gap-4 h-[500px] w-[350px]">
+            <div className="w-[1000px] rounded-xl border bg-card shadow p-6 flex justify-between items-center ">
+              <div className="flex flex-col rounded-3xl border bg-card shadow p-4 items-center gap-4 h-[500px] w-[350px]">
                 <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
                   Connect Your Wallet
                 </h1>
-                <div className="flex flex-col w-full border-slate-100 border-2 gap-4">
+                <div className="flex flex-col w-full rounded-3xl border bg-card shadow  gap-4">
                   <WalletMultiButton />
                   <WalletDisconnectButton />
                 </div>
