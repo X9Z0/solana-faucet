@@ -25,7 +25,7 @@ function App() {
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
           <div className="flex flex-col justify-center items-center h-screen">
-            <div className="w-[1000px] p-2 flex justify-end">
+            <div className="w-[1000px] p-2 mb-3 flex justify-end">
               <SwitchToggle />
             </div>
             <div className="w-[1000px] rounded-xl border bg-card shadow p-6 flex justify-between items-center ">
