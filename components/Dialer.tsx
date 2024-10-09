@@ -52,7 +52,7 @@ export default function Dialer() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center border-2 border-slate-100 p-2 w-[250px] h-[500px]">
+    <div className="relative rounded-3xl border bg-card flex flex-col items-center justify-center shadow p-2 w-[250px] h-[500px]">
       <div className="relative mb-4 ">
         <div
           className="dialer w-32 h-32 rounded-full border-4 border-gray-500"
