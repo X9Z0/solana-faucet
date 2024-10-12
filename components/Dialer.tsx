@@ -4,18 +4,26 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { ToastAction } from "./ui/toast";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Dialer() {
   const [currentValue, setCurrentValue] = useState<number>(0);
   const [rotation, setRotation] = useState<number>(0);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
-
   const wallet = useWallet();
   const { connection } = useConnection();
+  const { toast } = useToast();
 
   const requestAirdrop = async () => {
     if (!wallet.publicKey) {
       console.error("Wallet public key is null or undefined");
+      toast({
+        variant: "destructive",
+        title: "Wallet is not connected",
+        description: "publicKey was not found please connect your wallet",
+        action: <ToastAction altText=" Try Again">Try Again</ToastAction>,
+      });
       return;
     }
 
