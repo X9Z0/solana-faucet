@@ -33,7 +33,7 @@ function App() {
                 <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
                   Connect Your Wallet
                 </h1>
-                <div className="flex flex-col w-full rounded-3xl border bg-card shadow  gap-4">
+                <div className="flex flex-col w-full gap-4">
                   <WalletMultiButton />
                   <WalletDisconnectButton />
                 </div>
