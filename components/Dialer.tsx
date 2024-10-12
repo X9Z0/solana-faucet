@@ -2,11 +2,34 @@ import { ChevronUp, RotateCw } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 export default function Dialer() {
   const [currentValue, setCurrentValue] = useState<number>(0);
   const [rotation, setRotation] = useState<number>(0);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+  const wallet = useWallet();
+  const { connection } = useConnection();
+
+  const requestAirdrop = async () => {
+    if (!wallet.publicKey) {
+      console.error("Wallet public key is null or undefined");
+      return;
+    }
+
+    const amount = currentValue;
+
+    try {
+      await connection.requestAirdrop(
+        wallet.publicKey,
+        amount * LAMPORTS_PER_SOL,
+      );
+    } catch (e) {
+      console.error("Airdrop request failed", e);
+    }
+  };
 
   const resetDialer = () => {
     let valuea: number = currentValue;
@@ -55,20 +78,20 @@ export default function Dialer() {
     <div className="relative rounded-3xl border bg-card flex flex-col items-center justify-center shadow p-2 w-[250px] h-[500px]">
       <div className="relative mb-4 ">
         <div
-          className="dialer w-32 h-32 rounded-full border-4 border-gray-500"
+          className="dialer w-32 h-32 rounded-full border-4  "
           style={{ transform: `rotate(${rotation}deg)` }}
           onClick={rotateDialer}
         >
           <div className="dialer-inner absolute inset-0 flex items-center justify-center">
             <span className="text-sm">
-              <ChevronUp />
+              <ChevronUp color="#6a3093" />
             </span>
           </div>
         </div>
         {[...Array(totalMarks)].map((_, index) => (
           <div
             key={index}
-            className="absolute w-0.5 h-3 bg-gray-400"
+            className={`absolute w-0.5 h-3 ${index <= currentValue ? "dialer-marks" : "bg-gray-400"}`}
             style={{
               top: "50%",
               left: "50%",
@@ -78,13 +101,16 @@ export default function Dialer() {
           />
         ))}
       </div>
-      <div className="flex justify-center items-center gap-2 ">
+      <div className="flex flex-col justify-center items-center gap-2 ">
         <Input
           type="number"
           className="text-center mt-3"
           value={currentValue}
           readOnly
         />
+        <Button onClick={requestAirdrop} className="btn-grad w-full">
+          AirDrop
+        </Button>
       </div>
       <div className="absolute right-0 bottom-0 p-4">
         <Button variant={"outline"} size="icon" onClick={resetDialer}>
