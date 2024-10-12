@@ -100,3 +100,63 @@ body {
   height: 10px;
   border-radius: 50%;
 }
+
+.wallet-adapter-button {
+  width: 200px;
+}
+
+.wallet-adapter-button-trigger {
+  background-image: linear-gradient(
+    to right,
+    #6a3093 0%,
+    #a044ff 51%,
+    #6a3093 100%
+  );
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  display: block;
+}
+.wallet-adapter-button-trigger:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #6a3093 0%,
+    #a044ff 51%,
+    #6a3093 100%
+  );
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.dialer-marks {
+  background-image: linear-gradient(
+    to right,
+    #6a3093 0%,
+    #a044ff 51%,
+    #6a3093 100%
+  );
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  display: block;
+}
+
+.dialer-marks:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
