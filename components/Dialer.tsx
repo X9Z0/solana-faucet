@@ -6,6 +6,7 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { ToastAction } from "./ui/toast";
 import { useToast } from "@/hooks/use-toast";
+import { useBalanceContext } from "./context/solbalance";
 
 export default function Dialer() {
   const [currentValue, setCurrentValue] = useState<number>(0);
@@ -14,6 +15,7 @@ export default function Dialer() {
   const wallet = useWallet();
   const { connection } = useConnection();
   const { toast } = useToast();
+  const { getBalance } = useBalanceContext();
 
   const requestAirdrop = async () => {
     if (!wallet.publicKey) {
@@ -34,8 +36,15 @@ export default function Dialer() {
         wallet.publicKey,
         amount * LAMPORTS_PER_SOL,
       );
+      getBalance();
     } catch (e) {
       console.error("Airdrop request failed", e);
+      toast({
+        variant: "destructive",
+        title: "Airdrop request failed",
+        description:
+          e instanceof Error ? e.message : "an unsual error occurred",
+      });
     }
   };
 
