@@ -160,3 +160,20 @@ body {
   color: #fff;
   text-decoration: none;
 }
+
+.grad-back {
+  background-image: linear-gradient(
+    to right,
+    #6a3093 0%,
+    #a044ff 51%,
+    #6a3093 100%
+  );
+  transition: 0.5s;
+  background-size: 200% auto;
+  display: block;
+}
+
+.grad-back:hover {
+  background-position: right center; /* change the direction of the change here */
+  text-decoration: none;
+}
