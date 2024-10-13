@@ -15,6 +15,7 @@ import Dialer from "@/components/Dialer";
 import { apikey } from "@/key";
 
 function App() {
+  //api key
   const endpoint = useMemo(() => apikey, []);
 
   return (
