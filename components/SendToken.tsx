@@ -13,6 +13,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "./ui/toast";
 import { useBalanceContext } from "./context/solbalance";
+import { IconSpinner } from "./Spinner";
 
 export const SendToken = () => {
   const [recipientPublicKey, setRecipientPublicKey] = useState<string>("");
@@ -72,14 +73,13 @@ export const SendToken = () => {
   };
   return (
     <div className="rounded-3xl border relative flex flex-col justify-center bg-card shadow p-4">
-      <Button
+      <IconSpinner
         size={"icon"}
         variant={"outline"}
         onClick={sendTokens}
         className="w-12 h-12 flex justify-center items-center absolute top-0 right-0 translate-x-1/2 translate-y-0 rounded-full"
-      >
-        <SendIcon className="w-6 h-6 text-[#6a3093] " />
-      </Button>
+        icon={<SendIcon className="w-6 h-6 text-[#6a3093] " />}
+      />
       <div className="space-y-2">
         <div className="space-y-2">
           <Label htmlFor="recipientPublicKey" className="text-lg">
