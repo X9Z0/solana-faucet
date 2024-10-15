@@ -7,6 +7,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { useToast } from "@/hooks/use-toast";
 import { ed25519 } from "@noble/curves/ed25519";
 import bs58 from "bs58";
+import { IconSpinner } from "./Spinner";
 
 export const SignMessage = () => {
   const { publicKey, signMessage } = useWallet();
@@ -51,14 +52,13 @@ export const SignMessage = () => {
           Sign Message
         </Label>
         <div className="flex gap-2">
-          <Button
+          <IconSpinner
+            icon={<Pen className="w-6 h-6 text-[#6a3093] " />}
             onClick={SignMessage}
             variant={"outline"}
             size={"icon"}
             className="h-12 w-12"
-          >
-            <Pen className="w-6 h-6 text-[#6a3093] " />
-          </Button>
+          ></IconSpinner>
           <Input
             id="message"
             type="text"
