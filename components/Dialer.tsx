@@ -7,6 +7,7 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { ToastAction } from "./ui/toast";
 import { useToast } from "@/hooks/use-toast";
 import { useBalanceContext } from "./context/solbalance";
+import { IconSpinner } from "./Spinner";
 
 export default function Dialer() {
   const [currentValue, setCurrentValue] = useState<number>(0);
@@ -128,9 +129,11 @@ export default function Dialer() {
           value={currentValue}
           readOnly
         />
-        <Button onClick={requestAirdrop} className="btn-grad w-full">
-          AirDrop
-        </Button>
+        <IconSpinner
+          icon={"AirDrop"}
+          onClick={requestAirdrop}
+          className="btn-grad w-full"
+        />
       </div>
       <div className="absolute right-0 bottom-0 p-4">
         <Button variant={"outline"} size="icon" onClick={resetDialer}>
