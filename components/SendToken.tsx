@@ -54,7 +54,7 @@ export const SendToken = () => {
       );
 
       const signature = await wallet.sendTransaction(transaction, connection);
-      getBalance();
+      await getBalance();
 
       toast({
         variant: "default",
