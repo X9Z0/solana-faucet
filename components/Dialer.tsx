@@ -37,10 +37,10 @@ export default function Dialer() {
         wallet.publicKey,
         amount * LAMPORTS_PER_SOL,
       );
+      await getBalance();
       toast({
         title: "Tokens added succesfully",
       });
-      getBalance();
     } catch (e) {
       console.error("Airdrop request failed", e);
       toast({
