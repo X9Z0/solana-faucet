@@ -1,7 +1,6 @@
 import { Label } from "@radix-ui/react-label";
 import { Input } from "./ui/input";
 import { useState } from "react";
-import { Button } from "./ui/button";
 import { Pen } from "lucide-react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useToast } from "@/hooks/use-toast";
