@@ -13,7 +13,10 @@ import { SendToken } from "@/components/SendToken";
 import { SignMessage } from "@/components/SignMessage";
 import { motion } from "framer-motion";
 import ConnectButton from "@/components/ConnectButtons";
+import AuthenticationModal from "@/components/authentication";
+import { useState } from "react";
 function App() {
+  const [isAuth, setIsAuth] = useState<boolean>(false);
   return (
     <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
       <WalletProvider wallets={[]} autoConnect>
@@ -26,7 +29,9 @@ function App() {
                 duration: 0.3,
                 ease: "easeInOut",
               }}
+              className="relative"
             >
+              {!isAuth && <AuthenticationModal setIsAuth={setIsAuth} />}
               <div className="flex flex-col justify-center items-center h-screen">
                 <div className="w-[1000px] p-2 mb-3 flex justify-end">
                   <SwitchToggle />
