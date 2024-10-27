@@ -1,7 +1,7 @@
+"use client";
 import { useState } from "react";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { Button } from "./ui/button";
 import { SendIcon } from "lucide-react";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import {
