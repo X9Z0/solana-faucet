@@ -1,7 +1,6 @@
 export const SolanaLogo = () => {
   return (
     <div className="flex gap-4 justify-end items-center p-4 text-2xl font-semibold">
-      Solana
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 397.7 311.7"
