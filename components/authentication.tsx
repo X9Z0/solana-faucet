@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { ed25519 } from "@noble/curves/ed25519";
+import Cookies from "js-cookie";
 
 interface ChildComponentProps {
   setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
@@ -49,15 +50,17 @@ const AuthenticationModal: React.FC<ChildComponentProps> = ({ setIsAuth }) => {
       toast({
         variant: "destructive",
         title: "Message signature Invalid",
-        description: "message was not signed",
+        description: "Message was not signed",
       });
       return;
     }
+    await Cookies.set("authSign", signature);
     toast({
       title: "Message Signed successfully",
       description: `Message signature: ${bs58.encode(signature)}`,
     });
   };
+
   const handleAuthenticate = () => {
     setShowDialog(true);
     if (publicKey) setPublickey(publicKey?.toString());
@@ -81,6 +84,8 @@ const AuthenticationModal: React.FC<ChildComponentProps> = ({ setIsAuth }) => {
         title: "Success",
         description: "Authentication successful!",
       });
+
+      await Cookie.set("authSign", signature);
     } catch (error) {
       toast({
         title: "Error",
@@ -92,7 +97,9 @@ const AuthenticationModal: React.FC<ChildComponentProps> = ({ setIsAuth }) => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
-      <div className="absolute inset-0 bg-black bg-opacity-90"></div>
+      {showDialog && (
+        <div className="absolute inset-0 bg-black bg-opacity-10 backdrop-blur-lg"></div>
+      )}
       <div className="relative z-10">
         <div className="group">
           <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 via-purple-400 to-purple-800 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
