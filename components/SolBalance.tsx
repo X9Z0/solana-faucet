@@ -1,3 +1,4 @@
+"use client";
 import { useEffect } from "react";
 import { useBalanceContext } from "./context/solbalance";
 import { motion } from "framer-motion";
