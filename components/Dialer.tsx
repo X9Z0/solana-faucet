@@ -1,3 +1,4 @@
+"use client";
 import { ChevronUp, RotateCw } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
