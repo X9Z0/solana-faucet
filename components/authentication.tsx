@@ -86,6 +86,7 @@ const AuthenticationModal: React.FC<ChildComponentProps> = ({ setIsAuth }) => {
         description: "Authentication successful!",
       });
     } catch (error) {
+      console.error(error);
       toast({
         title: "Error",
         description: "Authentication failed. Please try again.",
